@@ -1,0 +1,17 @@
+{
+  "name": "openjlabel-wasm",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/openjlabel-wasm.esm.js",
+  "scripts": {
+    "start": "dts watch",
+    "build": "dts build"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^5.0.0",
+    "dts-cli": "^2.0.3",
+    "npm-check-updates": "^16.14.6",
+    "rollup-plugin-static-files": "^0.2.0",
+    "typescript": "^5.2.2"
+  }
+}
