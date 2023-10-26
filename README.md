@@ -1,6 +1,9 @@
 # OpenJLabel-WASM
 OpenJLabelのWASMビルドです  
 
+## 使い方
+examples を参考にしてください  
+
 ## ビルド
 Dockerを使用してビルドします  
 ```
