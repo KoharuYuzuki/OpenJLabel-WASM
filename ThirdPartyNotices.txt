@@ -2,6 +2,11 @@
 /build/*
 /dist/*
 
+=== OpenJLabel ===
+
+Copyright (c) 2023 KoharuYuzuki
+MIT License (https://opensource.org/license/mit/)
+
 === LibOpenJTalk ===
 
 /* ----------------------------------------------------------------- */
