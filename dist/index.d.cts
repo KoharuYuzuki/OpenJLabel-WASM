@@ -10,4 +10,4 @@ interface OpenjlabelInstance {
 }
 declare const _openjlabel: () => Promise<OpenjlabelInstance>;
 
-export { _openjlabel as default };
+export { type OpenjlabelInstance, _openjlabel as default };

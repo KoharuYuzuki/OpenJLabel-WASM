@@ -1,6 +1,6 @@
 import openjlabel from 'openjlabel'
 
-interface OpenjlabelInstance {
+export interface OpenjlabelInstance {
   callMain: (args: string[]) => void
   FS: {
     mkdir: (path: string) => void
