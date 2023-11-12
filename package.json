@@ -1,17 +1,24 @@
 {
   "name": "openjlabel-wasm",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "module": "dist/openjlabel-wasm.esm.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "dts watch",
-    "build": "dts build"
+    "build": "unbuild"
   },
   "devDependencies": {
-    "babel-plugin-module-resolver": "^5.0.0",
-    "dts-cli": "^2.0.3",
-    "npm-check-updates": "^16.14.6",
-    "rollup-plugin-static-files": "^0.2.0",
-    "typescript": "^5.2.2"
+    "@types/node": "^20.9.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "unbuild": "^2.0.0"
   }
 }

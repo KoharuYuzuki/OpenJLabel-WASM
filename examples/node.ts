@@ -1,9 +1,11 @@
 import openjlabel from 'openjlabel-wasm'
-import fs from 'fs'
+import { readFileSync } from 'fs'
 import { join } from 'path'
 
 const dictDirPath = 'path/to/dictDir'
-const dictFilePaths = [
+const memoryFSDictDirPath = '/dict'
+
+const dictFileNames = [
   'char.bin',
   'left-id.def',
   'matrix.bin',
@@ -12,24 +14,27 @@ const dictFilePaths = [
   'right-id.def',
   'sys.dic',
   'unk.dic'
-].map((fileName) => join(dictDirPath, fileName))
+]
 
-const dictData = dictFilePaths.map((filePath) => {
-  const buffer = fs.readFileSync(filePath)
-  return new Uint8Array(buffer)
+const dictFiles = dictFileNames.map((dictFileName) => {
+  const buffer = readFileSync(join(dictDirPath, dictFileName))
+  return {
+    path: join(memoryFSDictDirPath, dictFileName),
+    data: new Uint8Array(buffer)
+  }
 })
 
 openjlabel()
 .then((instance) => {
   const memoryFS = instance.FS
 
-  memoryFS.mkdir(dictDirPath)
-  dictData.forEach((data, i) => memoryFS.writeFile(dictFilePaths[i], data))
+  memoryFS.mkdir(memoryFSDictDirPath)
+  dictFiles.forEach((dictFile) => memoryFS.writeFile(dictFile.path, dictFile.data))
 
   const labelFilePath = '/output.lab'
   const text = 'こんにちは'
   const args = [
-    '-d', dictDirPath,
+    '-d', memoryFSDictDirPath,
     '-o', labelFilePath,
     text
   ]
